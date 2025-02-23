@@ -1,10 +1,9 @@
 public class ex03 {
-
-    public class car {
+    public class Car {
         private String brand;
         private String model;
 
-        constructor(String brand, String model){
+        public Car(String brand, String model) {
             this.brand = brand;
             this.model = model;
         }
