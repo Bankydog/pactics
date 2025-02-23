@@ -1,0 +1,4 @@
+find a letter in word
+1. Has "letter" ?
+2. How many "letter" ?
+3. where're Position  ?
