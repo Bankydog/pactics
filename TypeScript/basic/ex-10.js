@@ -21,7 +21,7 @@ function validateAmount(target, propertyKey, descriptor) {
 }
 // คลาส BankAccount
 class BankAccount {
-    constructor(initialBalance = 0) {
+    constructor(initialBalance) {
         if (initialBalance < 0) {
             throw new Error("Initial balance cannot be negative");
         }
@@ -31,28 +31,32 @@ class BankAccount {
         return this.balance;
     }
     deposit(amount) {
+        // เปลี่ยนเป็นคืนค่าเป็น number
         this.balance += amount;
         console.log(`Deposited: ${amount}. New balance: ${this.balance}`);
+        return this.balance; // คืนค่าบalance หลังการฝาก
     }
     withdraw(amount) {
+        // เปลี่ยนเป็นคืนค่าเป็น number
         if (amount > this.balance) {
             throw new Error("Insufficient funds");
         }
         this.balance -= amount;
         console.log(`Withdrew: ${amount}. New balance: ${this.balance}`);
+        return this.balance; // คืนค่าบalance หลังการถอน
     }
 }
 __decorate([
     validateAmount,
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Number)
 ], BankAccount.prototype, "deposit", null);
 __decorate([
     validateAmount,
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Number)
 ], BankAccount.prototype, "withdraw", null);
 // ตัวอย่างการใช้งาน
 const myAccount = new BankAccount(1000);
