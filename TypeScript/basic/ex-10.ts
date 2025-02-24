@@ -20,7 +20,7 @@ function validateAmount(
 class BankAccount {
   private balance: number;
 
-  constructor(initialBalance: number = 0) {
+  constructor(initialBalance: number) {
     if (initialBalance < 0) {
       throw new Error("Initial balance cannot be negative");
     }
@@ -32,18 +32,22 @@ class BankAccount {
   }
 
   @validateAmount
-  deposit(amount: number): void {
+  deposit(amount: number): number {
+    // เปลี่ยนเป็นคืนค่าเป็น number
     this.balance += amount;
     console.log(`Deposited: ${amount}. New balance: ${this.balance}`);
+    return this.balance; // คืนค่าบalance หลังการฝาก
   }
 
   @validateAmount
-  withdraw(amount: number): void {
+  withdraw(amount: number): number {
+    // เปลี่ยนเป็นคืนค่าเป็น number
     if (amount > this.balance) {
       throw new Error("Insufficient funds");
     }
     this.balance -= amount;
     console.log(`Withdrew: ${amount}. New balance: ${this.balance}`);
+    return this.balance; // คืนค่าบalance หลังการถอน
   }
 }
 
